@@ -17,17 +17,24 @@ app.get("/", (req, res) => {
 
 app.post("/chatbot", async (req, res) => {
 
-    const message = req.body.message.replace("cb", "");
-    const app = req.body.app;
-    const sender = req.body.sender;
-    const group_name = req.body.group_name;
-    const phone = req.body.phone;
+    const message = req.body.query.message;
+    // const app = req.body.app;
+    // const sender = req.body.sender;
+    // const group_name = req.body.group_name;
+    // const phone = req.body.phone;
 
     console.log(message);
 
     try {
         const { data } = await axios.get(`http://api.brainshop.ai/get?bid=169550&key=qUo7wn5htJ3HmkNz&uid=[uid]&msg=[${message}]`);
-        res.json({ reply: `@${phone === undefined ? "BOT" : phone}: ${data.cnt}` })
+        // res.json({ reply: `@${phone === undefined ? "BOT" : phone}: ${data.cnt}` })
+        res.json({
+            "replies": [
+                {
+                    "message": `BOT: ${data.cnt}`
+                }
+            ]
+        })
     } catch (error) {
         res.json({ reply: "The AI BOT server is down! Kindly contact ADMIN @Butcher." });
     }
