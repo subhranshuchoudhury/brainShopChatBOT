@@ -20,6 +20,7 @@ app.post("/chatbot", async (req, res) => {
 
     const message = req.body.query.message.toUpperCase().replace("CB", "");
     const sender = req.body.query.sender;
+    const isGroup = req.body.isGroup;
 
     console.log(message);
 
@@ -28,7 +29,7 @@ app.post("/chatbot", async (req, res) => {
         res.json({
             "replies": [
                 {
-                    "message": `${sender === undefined ? "" : sender} ${data.cnt}`
+                    "message": `@${isGroup ? "" : sender} : ${data.cnt}`
                 }
             ]
         })
