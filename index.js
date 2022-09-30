@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
 
 app.post("/chatbot", async (req, res) => {
 
-    const message = req.body.query.message;
+    const message = req.body.query.message.toUpperCase().replace("CB", "");
     // const app = req.body.app;
     // const sender = req.body.sender;
     // const group_name = req.body.group_name;
