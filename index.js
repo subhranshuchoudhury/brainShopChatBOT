@@ -20,7 +20,7 @@ app.post("/chatbot", async (req, res) => {
 
     const message = req.body.query.message.toUpperCase().replace("CB", "");
     const sender = req.body.query.sender;
-    const isGroup = req.body.isGroup;
+    const isGroup = req.body.query.isGroup;
 
     console.log(message);
 
