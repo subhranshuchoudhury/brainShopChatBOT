@@ -3,9 +3,9 @@ const axios = require('axios');
 const bodyParser = require('body-parser');
 require('dotenv').config();
 const app = express();
-app.use(bodyParser.json());
 
 app.use((req, res, next) => { res.header({ "Access-Control-Allow-Origin": "*" }); next(); });
+app.use(bodyParser.json());
 
 
 app.get("/", (req, res) => {
@@ -23,11 +23,13 @@ app.post("/chatbot", async (req, res) => {
     const group_name = req.body.group_name;
     const phone = req.body.phone;
 
+    console.log(message);
+
     try {
-        const { data } = await axios.get(`http://api.brainshop.ai/get?bid=${process.env.bid}&key=${process.env.key}&uid=[uid]&msg=[${message}]`);
-        res.send({ reply: `@${phone === undefined ? "BOT:" : phone} ${data.cnt}` });
+        const { data } = await axios.get(`http://api.brainshop.ai/get?bid=169550&key=qUo7wn5htJ3HmkNz&uid=[uid]&msg=[${message}]`);
+        res.json({ reply: `@${phone === undefined ? "BOT" : phone}: ${data.cnt}` })
     } catch (error) {
-        res.send({ reply: "The AI BOT server is down! Kindly contact ADMIN @Butcher." });
+        res.json({ reply: "The AI BOT server is down! Kindly contact ADMIN @Butcher." });
     }
 
 });
