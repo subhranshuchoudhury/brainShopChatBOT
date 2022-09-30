@@ -1,0 +1,20 @@
+{
+  "name": "brain-ai-chat-bot",
+  "version": "1.0.0",
+  "description": "Brainshop AI for chat bot",
+  "main": "index.js",
+  "engines": {
+    "node": "16.x"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Subhranshu Choudhury",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "body-parser": "^1.20.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.1"
+  }
+}
