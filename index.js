@@ -26,7 +26,7 @@ app.post("/chatbot", async (req, res) => {
 
     try {
         const { data } = await axios.get(`http://api.brainshop.ai/get?bid=${process.env.bid}&key=${process.env.key}&uid=[uid]&msg=[${message}]`);
-        res.send({ reply: `@${phone} ${message}` });
+        res.send({ reply: `@${phone === undefined ? "BOT:" : phone} ${message}` });
     } catch (error) {
         res.send({ reply: "The AI BOT server is down! Kindly contact ADMIN @Butcher." });
     }
